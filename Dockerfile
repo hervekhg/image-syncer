@@ -10,4 +10,4 @@ RUN chmod +x ./image-syncer
 RUN apk add -U --no-cache ca-certificates && rm -rf /var/cache/apk/* && mkdir -p /etc/ssl/certs \
   && update-ca-certificates --fresh
 ENTRYPOINT ["image-syncer"]
-CMD ["--config", "/etc/image-syncer/image-syncer.json"]
+CMD ["--proc=3", "--auth=/etc/image-syncer/auth.yaml", "--images=/etc/image-syncer/images.yaml", "--retries=3"]
